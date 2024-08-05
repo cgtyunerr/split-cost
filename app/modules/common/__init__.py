@@ -1,13 +1,13 @@
-"""Module for storing modules."""
-from common import (
+"""Common module."""
+from .exceptions import(
     InvalidInputError,
     NotFoundError,
-    ConflictError,
     UnprocessableEntityError,
+    ConflictError,
 )
 
 __all__ = [
-    # Common
+    # exceptions
     "InvalidInputError",
     "NotFoundError",
     "ConflictError",
