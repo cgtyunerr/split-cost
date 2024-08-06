@@ -51,6 +51,7 @@ class Settings(BaseSettings):
 
     DB: DatabaseSettings
     LOG_LEVEL: str
+    JWT_SECRET: str
 
 
 settings: Settings = Settings()
