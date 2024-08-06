@@ -14,6 +14,7 @@ pydantic-settings = "^2.4.0"
 uvicorn = "^0.30.5"
 jose = "^1.0.0"
 alembic = "^1.13.2"
+asyncpg = "^0.29.0"
 
 
 [build-system]

@@ -8,13 +8,17 @@ from sqlalchemy.ext.asyncio import create_async_engine
 from app.modules.common import Base
 from app.config import settings
 
-config = context.config
+from app.modules.user.models import *
 
 target_metadata = Base.metadata
 
 
 def do_run_migrations(connection):
-    context.configure(connection=connection, target_metadata=target_metadata)
+    context.configure(
+        connection=connection,
+        target_metadata=target_metadata,
+        version_table_schema="public"
+    )
 
     with context.begin_transaction():
         context.run_migrations()

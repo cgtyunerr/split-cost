@@ -33,7 +33,7 @@ class DatabaseSettings(BaseSettings):
         return MultiHostUrl.build(
             scheme="postgresql+asyncpg",
             username=self.USER,
-            password=self.PASSWORD,
+            password=self.PASS,
             host=self.HOST,
             path=self.NAME,
             port=self.PORT,

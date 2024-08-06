@@ -77,8 +77,3 @@ class TableNameMixin:
         """Generate table name."""
         return cls.__name__.lower()
 
-    @declared_attr
-    def __table_args__(cls):
-        """Generate schema name."""
-        schema_name = cls.__module__.split('.')[-1]
-        return {'schema': schema_name}
