@@ -1,6 +1,6 @@
 """Common models package."""
-from .base import Base
 from .mixin import IDMixin, TimeStampMixin, IsActiveMixin
+from .base import Base
 
 __all__ = [
     # Mixins
@@ -9,5 +9,4 @@ __all__ = [
     "IsActiveMixin",
     # Base models
     "Base",
-
 ]

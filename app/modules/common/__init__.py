@@ -5,7 +5,7 @@ from .exceptions import(
     UnprocessableEntityError,
     ConflictError,
 )
-from models import Base
+from .models import Base
 
 __all__ = [
     # exceptions
