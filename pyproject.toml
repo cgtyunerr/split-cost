@@ -13,6 +13,7 @@ sqlalchemy = "^2.0.32"
 pydantic-settings = "^2.4.0"
 uvicorn = "^0.30.5"
 jose = "^1.0.0"
+alembic = "^1.13.2"
 
 
 [build-system]
