@@ -6,6 +6,7 @@ from .common import (
     UnprocessableEntityError,
 )
 
+
 __all__ = [
     # Common
     "InvalidInputError",

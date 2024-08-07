@@ -4,7 +4,7 @@ from typing import AsyncGenerator
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app import Settings
+from app.config import settings
 
 from .base_session import BaseSessionManager
 
@@ -31,5 +31,5 @@ class DatabaseSessionManager(BaseSessionManager):
 
 
 database_session_manager: DatabaseSessionManager = DatabaseSessionManager(
-    str(Settings.DB.db_url)
+    str(settings.DB.db_url)
 )

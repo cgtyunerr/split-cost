@@ -11,12 +11,14 @@ from app.modules import (
     NotFoundError,
     UnprocessableEntityError,
 )
+from app.modules.user import LoginFailedError
 
 custom_errors: dict[Type[Exception], int] = {
     ConflictError: status.HTTP_409_CONFLICT,
     InvalidInputError: status.HTTP_400_BAD_REQUEST,
     NotFoundError: status.HTTP_404_NOT_FOUND,
     UnprocessableEntityError: status.HTTP_422_UNPROCESSABLE_ENTITY,
+    LoginFailedError: status.HTTP_401_UNAUTHORIZED
 }
 
 

@@ -6,6 +6,7 @@ from .exceptions import(
     ConflictError,
 )
 from .models import Base
+from .service import Service
 
 __all__ = [
     # exceptions
@@ -15,4 +16,6 @@ __all__ = [
     "UnprocessableEntityError",
     # Models
     "Base",
+    # Service
+    "Service",
 ]

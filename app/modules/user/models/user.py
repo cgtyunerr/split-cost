@@ -1,13 +1,14 @@
 """User database model."""
 import re
 
-from sqlalchemy.orm import Mapped, validates
+from sqlalchemy import TEXT
+from sqlalchemy.orm import Mapped, validates, mapped_column
 
 from app.modules.common import InvalidInputError
-from app.modules.common.models import IDMixin, IsActiveMixin, TimeStampMixin, Base, text
+from app.modules.common.models import IDMixin, TimeStampMixin, Base, text
 
 
-class User(Base, IDMixin, IsActiveMixin, TimeStampMixin):
+class User(Base, IDMixin, TimeStampMixin):
     """User database model."""
 
     __tablename__ = "user"
@@ -15,7 +16,7 @@ class User(Base, IDMixin, IsActiveMixin, TimeStampMixin):
 
     username: Mapped[text]
     password: Mapped[text]
-    email: Mapped[text]
+    email: Mapped[str] = mapped_column(TEXT, unique=True, nullable=False)
 
     @validates('email')
     def validate_email(self, key, email):
