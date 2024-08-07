@@ -1,10 +1,10 @@
 """Group service module."""
 from pydantic import validate_call, InstanceOf
-from sqlalchemy import select, and_
+from sqlalchemy import select, and_, delete
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.modules.common import Service, PermissionType, NotFoundError
-from app.modules.group import permission_check
+from app.modules.permission_manager import permission_check
 from app.modules.group.models import Group, UserGroup
 
 
@@ -79,16 +79,8 @@ class GroupOperationsService(Service):
         group = group_result.scalar_one_or_none()
         if group is None:
             raise NotFoundError("Group not found.")
-
         group.is_active = False
-
-        user_result = await session.execute(select(UserGroup).filter(
-            and_(
-                UserGroup.group_id == group_id
-            )
-        ))
-
-        users = user_result.scalars().all()
-        await session.delete(users)
+        stmt = delete(UserGroup).where(UserGroup.id == group_id)
+        await session.execute(stmt)
 
 

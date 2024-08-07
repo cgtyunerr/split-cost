@@ -1,12 +1,13 @@
 """Group invitation service module."""
 from pydantic import validate_call, InstanceOf
-from sqlalchemy import select, and_
+from sqlalchemy import select, and_, not_
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.modules.common import Service, PermissionType, ConflictError, NotFoundError
-from app.modules.group import permission_check
+from app.modules.permission_manager import permission_check
 from app.modules.group.models import UserGroup
+from app.modules.group.schemas import InvitationSchema, Invitations
 
 
 class InvitationService(Service):
@@ -74,7 +75,7 @@ class InvitationService(Service):
             and_(
                 UserGroup.id == invitation_id,
                 UserGroup.user_id == user_id,
-                not UserGroup.is_active
+                not_(UserGroup.is_active)
             )
         ))
         user = result_query.scalars().first()
@@ -88,21 +89,24 @@ class InvitationService(Service):
         self,
         user_id: int,
         session: InstanceOf[AsyncSession]
-    ) -> list[int]:
+    ) -> Invitations:
         """Get invited group ids."""
         result_query = await session.execute(select(UserGroup).filter(
             and_(
                 UserGroup.user_id == user_id,
-                not UserGroup.is_active
+                not_(UserGroup.is_active)
             )
         ))
         users = result_query.scalars().all()
         if not users:
             NotFoundError("Invitations not found.")
 
-        result: list[[int, int]] = []
+        result: Invitations = []
         for user in users:
             result.append(
-                (user.id, user.group_id)
+                InvitationSchema(
+                    invitation_id=user.id,
+                    group_id=user.group_id
+                )
             )
         return result

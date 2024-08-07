@@ -1,5 +1,5 @@
 """Group src package."""
 
-from .api import permission_check, group_router
+from .api import group_router
 
-__all__ = ["permission_check", "group_router"]
+__all__ = ["group_router"]
