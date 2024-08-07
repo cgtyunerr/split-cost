@@ -3,6 +3,7 @@ from fastapi import FastAPI
 
 from app.middlewares import GenericErrorHandlerMiddleware
 from app.modules.user import user_router
+from app.modules.group import group_router
 
 app: FastAPI = FastAPI(
     title="split cost API",
@@ -12,4 +13,5 @@ app: FastAPI = FastAPI(
 app.add_middleware(GenericErrorHandlerMiddleware)
 
 app.include_router(user_router)
+app.include_router(group_router)
 

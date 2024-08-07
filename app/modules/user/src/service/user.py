@@ -1,6 +1,4 @@
 """User service module."""
-from datetime import datetime
-
 from pydantic import validate_call, InstanceOf
 from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError

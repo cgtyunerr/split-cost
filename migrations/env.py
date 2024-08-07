@@ -9,6 +9,7 @@ from app.modules.common import Base
 from app.config import settings
 
 from app.modules.user.models import *
+from app.modules.group.models import *
 
 target_metadata = Base.metadata
 

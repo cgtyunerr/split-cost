@@ -10,6 +10,7 @@ from app.modules import (
     InvalidInputError,
     NotFoundError,
     UnprocessableEntityError,
+    ForbiddenError,
 )
 from app.modules.user import LoginFailedError
 
@@ -18,7 +19,8 @@ custom_errors: dict[Type[Exception], int] = {
     InvalidInputError: status.HTTP_400_BAD_REQUEST,
     NotFoundError: status.HTTP_404_NOT_FOUND,
     UnprocessableEntityError: status.HTTP_422_UNPROCESSABLE_ENTITY,
-    LoginFailedError: status.HTTP_401_UNAUTHORIZED
+    LoginFailedError: status.HTTP_401_UNAUTHORIZED,
+    ForbiddenError: status.HTTP_403_FORBIDDEN
 }
 
 

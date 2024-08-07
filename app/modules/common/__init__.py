@@ -4,9 +4,11 @@ from .exceptions import(
     NotFoundError,
     UnprocessableEntityError,
     ConflictError,
+    ForbiddenError,
 )
 from .models import Base
 from .service import Service
+from .schemas import PermissionType
 
 __all__ = [
     # exceptions
@@ -14,8 +16,11 @@ __all__ = [
     "NotFoundError",
     "ConflictError",
     "UnprocessableEntityError",
+    "ForbiddenError",
     # Models
     "Base",
     # Service
     "Service",
+    # Schemas
+    "PermissionType",
 ]

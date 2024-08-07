@@ -4,6 +4,7 @@ from .common import (
     NotFoundError,
     ConflictError,
     UnprocessableEntityError,
+    ForbiddenError,
 )
 
 
@@ -13,4 +14,5 @@ __all__ = [
     "NotFoundError",
     "ConflictError",
     "UnprocessableEntityError",
+    "ForbiddenError",
 ]

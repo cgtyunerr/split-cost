@@ -16,3 +16,6 @@ class ConflictError(ValueError):
 class UnprocessableEntityError(ValueError):
     """Item is unprocessable."""
 
+
+class ForbiddenError(ValueError):
+    """Raise when user doesn't have access for given entity."""
